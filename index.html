@@ -11,7 +11,7 @@
     }
 
     body {
-      height: 100vh;
+      min-height: 100vh; /* mobile-safe */
       width: 100vw;
       display: flex;
       align-items: center;
@@ -19,6 +19,7 @@
       background: #000000;
       font-family: "Segoe UI", sans-serif;
       color: #e5e7eb;
+      padding: 20px; /* prevents edge clipping on phones */
     }
 
     .page-stack {
@@ -26,6 +27,7 @@
       flex-direction: column;
       align-items: center;
       gap: 32px;
+      width: 100%;
     }
 
     .status-wrapper {
@@ -68,7 +70,8 @@
       background: rgba(15, 23, 42, 0.85);
       border: 1px solid rgba(148, 163, 184, 0.35);
       border-radius: 16px;
-      width: 360px;
+      width: 90%;          /* responsive */
+      max-width: 360px;    /* keeps your original size */
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -89,21 +92,21 @@
     .message-form input,
     .message-form textarea {
       width: 100%;
-      padding: 10px 12px;
+      padding: 12px;
       border-radius: 8px;
       border: 1px solid rgba(148, 163, 184, 0.35);
       background: rgba(30, 41, 59, 0.9);
       color: #e5e7eb;
-      font-size: 14px;
+      font-size: 15px;
     }
 
     .message-form textarea {
-      height: 100px;
+      height: 110px;
       resize: vertical;
     }
 
     .message-form button {
-      padding: 10px 14px;
+      padding: 12px 14px;
       border-radius: 8px;
       border: none;
       background: #22c55e;
@@ -111,6 +114,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s ease;
+      font-size: 15px;
     }
 
     .message-form button:hover {
@@ -135,6 +139,33 @@
       font-size: 14px;
       text-align: center;
       margin-bottom: -8px;
+    }
+
+    /* 📱 Mobile tweaks */
+    @media (max-width: 480px) {
+      .page-stack {
+        gap: 24px;
+      }
+
+      .message-wrapper {
+        padding: 18px 20px;
+        gap: 14px;
+      }
+
+      .message-title {
+        font-size: 16px;
+      }
+
+      .message-form input,
+      .message-form textarea {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .message-form button {
+        font-size: 14px;
+        padding: 10px;
+      }
     }
   </style>
 </head>
